@@ -13,6 +13,18 @@ $user_input = [
         'password'=>'',
         'body'=>'',
         
+        ],
+
+        [
+
+        'product_id'=>'',
+        'productname'=>'',
+        'product_cost'=>'',
+        ],
+
+        [
+            'order_id'=>'',
+            'order_date' =>'',
         ]
     
     
