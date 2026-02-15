@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class=" grid sm:grid sm:w-full bg-purple-500  sm:justify-center text-center items-center sm:h-40  sm:mt-0  ">
-        <h2 class="text-center text-4xl font-md  font-bold   text-black-400">WELCOME TO NESO CAR COMPANY LIMITED</h2>
+C        <h2 class="text-center text-4xl font-md  font-bold animate-bounce text-black-400">WELCOME TO NESO CAR COMPANY LIMITED</h2>
 
     </div>
     
@@ -23,8 +23,8 @@
                 <img class="h-auto w-full " src="image/lambugin1.webp">
             </div>
             <div>
-                <h2 class="text-4xl text-center text-[#CD7F32] font-md  hover:bg-blue-200 m-5 font-bold"> NESO COMPANY </h2>
-                <p class="text-center text-lg font-md m-5  font-bold"> It deals with import, export and sell Quality cars and trucks from JAPAN.Our company is under the certain protocol which ensure the customers get good and quality services. </p> 
+                <h2 class="text-4xl text-center text-[#CD7F32] font-md   animate-bounce hover:bg-blue-200 m-5 font-bold"> NESO COMPANY </h2>
+                <p class="text-center text-lg font-md m-5 animate-bounce  font-bold"> It deals with import, export and sell Quality cars and trucks from JAPAN.Our company is under the certain protocol which ensure the customers get good and quality services. </p> 
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
         </card>
 
         <card>
-            <h2 class="text-center text-lg font-md font-bold  text-center hover:bg-blue-200 hover:rounded-lg font-4xl font-bold text-6xl text-[#000000]">Follow Us</h2>
+            <h2 class="text-center text-lg font-md font-bold  text-center text-4xl  hover:bg-blue-200 hover:rounded-lg font-4xl font-bold text-6xl text-[#000000]">Follow Us</h2>
              <p class="text-center text-lg font-md font-bold text-white">Instagram</p>
              <p class="text-center text-lg font-md font-bold text-white">Twitter</p>
              
@@ -58,6 +58,5 @@
     
    
    
-
 </body>
 </html>

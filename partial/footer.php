@@ -16,5 +16,5 @@
 
 
      <div class="  grid sm:grid-cols-1 items-center mt-0 h-20 bg-[#000000] w-full  ">
-        <h2 class="text-center text-lg font-md font-bold text-white">@2025 NesoCompany.All rights reserved.</h2>
+        <h2 class="text-center text-lg font-md font-bold text-white">@2026 NesoCompany.All rights reserved.</h2>
     </div>
