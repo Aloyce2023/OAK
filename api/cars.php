@@ -2,7 +2,7 @@
 // backend/api/cars.php
 require_once "config.php";
 
-$query = "SELECT * FROM cars ORDER BY created_at DESC";
+$query = "SELECT * FROM cars";
 $result = $conn->query($query);
 
 if ($result) {

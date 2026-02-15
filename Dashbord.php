@@ -95,37 +95,96 @@ if (isset($_GET['error'])) {
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
-    <!-- Navbar -->
-    <div class="grid shadow:bg-blue-400 grid-cols-12 bg-[#00FFFF] items-center w-full rounded-lg mb-8">
-        <div class="col-span-2">
-            <img class="w-32 h-32 object-contain mx-auto" src="image/logo.jpg">
-        </div>
-        <div class="col-span-10 flex justify-between items-center pr-8">
-            <ul class="flex items-center cursor-pointer font-md font-bold text-center text-[#000000] text-md">
-                <li class="hover:bg-gray-900 hover:rounded-lg py-4 px-4 hover:text-white"><a href="index.php">Home</a></li>
-                <li class="hover:bg-gray-900 hover:rounded-lg py-4 px-4 hover:text-white"><a href="about.php">About</a></li>
-                <li class="hover:bg-gray-900 hover:rounded-lg py-4 px-4 hover:text-white"><a href="galley.php">Galley</a></li>
-                <li class="hover:bg-gray-900 hover:rounded-lg py-4 px-4 hover:text-white active"><a href="Dashbord.php">Dashbord</a></li>
-            </ul>
-            
-            <div class="flex items-center gap-4">
+    <!-- Responsive Navbar -->
+    <nav class="bg-[#00FFFF] shadow-md w-full overflow-hidden">
+        <div class="w-full flex items-center h-28">
+            <!-- Left: Logo & Brand -->
+            <div class="flex-none flex items-center h-full pr-8">
+                <img class="h-full w-auto object-cover" src="image/logo.jpg" alt="Logo">
+                <div class="hidden lg:block ml-4">
+                    <span class="text-xs font-black uppercase tracking-widest text-black/40">Dashboard</span>
+                    <h1 class="font-bold text-gray-900 leading-tight">NESO CARS</h1>
+                </div>
+            </div>
+
+            <!-- Center: Navigation Links -->
+            <div class="grow hidden md:flex justify-center">
+                <ul class="flex items-center font-bold text-gray-900 gap-2">
+                    <li class="hover:bg-black/10 px-6 py-2 rounded-lg transition-all"><a href="index.php">Home</a></li>
+                    <li class="hover:bg-black/10 px-6 py-2 rounded-lg transition-all"><a href="about.php">About</a></li>
+                    <li class="hover:bg-black/10 px-6 py-2 rounded-lg transition-all"><a href="galley.php">Galley</a></li>
+                </ul>
+            </div>
+
+            <!-- Right: User Controls -->
+            <div class="flex-none hidden md:flex items-center gap-4 pr-8">
                 <?php if ($is_admin): ?>
-                    <span class="bg-black text-yellow-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-yellow-400/30">
-                        <i class="fas fa-crown text-[10px] mr-1"></i> Admin
+                    <span class="bg-black text-yellow-400 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                        <i class="fas fa-crown"></i> Admin
                     </span>
                 <?php endif; ?>
-                <div class="flex items-center gap-2 bg-black/5 px-4 py-2 rounded-xl">
-                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                    <span class="text-sm font-bold text-gray-800">Hi, <?php echo htmlspecialchars($username); ?></span>
+                
+                <div class="flex items-center gap-3 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-2xl border border-white/20">
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+                    <span class="text-sm font-black text-gray-900 tracking-tight"><?php echo htmlspecialchars($username); ?></span>
                 </div>
-                <a href="logout.php" class="bg-red-600 hover:bg-black text-white text-xs font-black py-2.5 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-red-500/20 active:scale-95 uppercase tracking-widest">
-                    Logout
+                
+                <a href="logout.php" class="bg-red-600 hover:bg-black text-white text-[10px] font-black py-3 px-6 rounded-xl transition-all duration-300 shadow-xl uppercase tracking-[0.2em]"> Logout </a>
+            </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-3">
+                    <?php if ($is_admin): ?>
+                        <div class="w-8 h-8 bg-black text-yellow-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-crown text-xs"></i>
+                        </div>
+                    <?php endif; ?>
+                    <button id="dashboard-menu-btn" class="w-12 h-12 bg-white/50 rounded-xl flex items-center justify-center text-gray-900 focus:outline-none border border-white/20">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="dashboard-mobile-menu" class="hidden md:hidden bg-[#00FFFF] border-t border-black/5 animate-in slide-in-from-top duration-300">
+            <div class="px-4 pt-4 pb-8 space-y-4">
+                <div class="flex items-center justify-between pb-4 border-b border-black/5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-white/50 flex items-center justify-center font-black text-gray-900 shadow-sm">
+                            <?php echo strtoupper(substr($username, 0, 1)); ?>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-gray-500 uppercase tracking-widest">Active Member</div>
+                            <div class="font-black text-gray-900"><?php echo htmlspecialchars($username); ?></div>
+                        </div>
+                    </div>
+                    <?php if ($is_admin): ?>
+                        <span class="bg-black text-yellow-500 text-[10px] font-black px-3 py-1 rounded-full uppercase">Admin</span>
+                    <?php endif; ?>
+                </div>
+
+                <ul class="space-y-2 font-bold text-gray-900">
+                    <li><a href="index.php" class="flex items-center gap-3 p-4 hover:bg-black/5 rounded-xl transition-all"><i class="fas fa-home w-5 text-gray-400"></i> Home</a></li>
+                    <li><a href="about.php" class="flex items-center gap-3 p-4 hover:bg-black/5 rounded-xl transition-all"><i class="fas fa-info-circle w-5 text-gray-400"></i> About</a></li>
+                    <li><a href="galley.php" class="flex items-center gap-3 p-4 hover:bg-black/5 rounded-xl transition-all"><i class="fas fa-images w-5 text-gray-400"></i> Gallery</a></li>
+                </ul>
+
+                <a href="logout.php" class="block w-full bg-red-600 text-white text-center font-black py-4 rounded-xl shadow-lg shadow-red-500/20">
+                    <i class="fas fa-sign-out-alt mr-2"></i> LOGOUT
                 </a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="container mx-auto mt-8 p-4">
+    <script>
+        document.getElementById('dashboard-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('dashboard-mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+    <div class="container mx-auto mt-0 p-4">
         
         <!-- Alerts -->
         <?php if ($success_msg): ?>

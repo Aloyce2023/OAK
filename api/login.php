@@ -8,7 +8,7 @@ if (!empty($data->username) && !empty($data->password)) {
     $username = $data->username;
     $password = $data->password;
 
-    $query = "SELECT id, username, password FROM user_input WHERE username = ?";
+    $query = "SELECT id, username, password, role FROM user_input WHERE username = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -18,12 +18,18 @@ if (!empty($data->username) && !empty($data->password)) {
         $user = $result->fetch_assoc();
         
         if (password_verify($password, $user['password'])) {
+            // Bulletproof Admin Check for Aloyce
+            if (strtolower($user['username']) === 'aloyce') {
+                $user['role'] = 'admin';
+            }
+
             http_response_code(200);
             echo json_encode(array(
                 "success" => true,
                 "message" => "Login successful.",
                 "user_id" => $user['id'],
-                "username" => $user['username']
+                "username" => $user['username'],
+                "role" => $user['role']
             ));
         } else {
             http_response_code(401);
